@@ -2,6 +2,7 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
+import { runMigrations, checkMigrationsNeeded } from './migrations';
 
 // Database file location
 // In Electron environment, use app.getPath('documents')
@@ -57,6 +58,12 @@ export function initDatabase(saveFileName: string): Database.Database {
     // Performance optimizations
     currentDb.pragma('journal_mode = WAL');
     currentDb.pragma('synchronous = NORMAL');
+
+    // Run migrations if needed
+    if (checkMigrationsNeeded(currentDb)) {
+      console.log('Running database migrations...');
+      runMigrations(currentDb);
+    }
 
     console.log(`Database initialized: ${dbPath}`);
   }
