@@ -28,7 +28,7 @@ const sampleContract: Contract = {
     { year: 4, base_salary: 10000000, roster_bonus: 0, workout_bonus: 50000, guarantees: 0 }
   ],
   has_void_years: false,
-  void_year: null
+  void_year: undefined
 };
 
 // Test 1: Calculate Cap Hit

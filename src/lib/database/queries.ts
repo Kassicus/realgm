@@ -1,4 +1,5 @@
 import { getDatabase } from './client';
+import type { Team } from '../../types/team';
 
 export interface Player {
   player_id: number;
@@ -9,16 +10,6 @@ export interface Player {
   overall_rating: number;
   current_team_id: number | null;
   roster_status: string;
-}
-
-export interface Team {
-  team_id: number;
-  name: string;
-  abbreviation: string;
-  city: string;
-  conference: string;
-  division: string;
-  current_cap_space: number;
 }
 
 /**
